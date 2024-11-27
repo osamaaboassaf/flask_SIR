@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .results-container {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .results-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .result-item {
+            padding: 15px;
+            margin-bottom: 15px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-item strong {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .no-results {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #555;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="results-container">
+        <h1>Search Results</h1>
+        {% if results %}
+        <ul class="list-unstyled">
+            {% for question, answer in results %}
+            <li class="result-item">
+                <strong>Question:</strong> {{ question }}<br>
+                <strong>Answer:</strong> {{ answer }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="no-results">No results found. Try another query.</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>
